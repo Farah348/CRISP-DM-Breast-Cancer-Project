@@ -1,0 +1,3 @@
+split,rows,malignant_count,benign_count
+train,455,170,285
+test,114,42,72
