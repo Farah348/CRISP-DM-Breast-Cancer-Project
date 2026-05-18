@@ -1,43 +1,87 @@
-# CRISP-DM Breast Cancer Classification Project
+# CRISP-DM Breast Cancer Project - Larger SEER Dataset Version
 
-This repository contains the complete Python code package for the Mining and Predictive Analytics (COMP 30044) CW2 assignment.
+This repository contains the updated larger-dataset version of the Mining and Predictive Analytics (COMP 30044) CW2 assignment.
 
-The project follows the CRISP-DM methodology to perform a breast cancer diagnostic classification task using the Breast Cancer Wisconsin Diagnostic dataset.
+The project follows the CRISP-DM methodology to perform a healthcare classification task using a SEER/Kaggle breast cancer survival dataset.
 
-## Project Files
+## Dataset
 
-- `train_model.py` - Main Python script for dataset loading, EDA, preprocessing, model training, hyperparameter tuning, evaluation, graph creation, and artifact saving.
-- `app.py` - Streamlit app for uploading CSV files and generating predictions.
-- `requirements.txt` - Required Python libraries.
-- `sample_input.csv` - Sample input file for testing the Streamlit app.
-- `artifacts/metrics.csv` - Final model comparison results.
-- `artifacts/best_hyperparameters.json` - Best hyperparameters selected through GridSearchCV.
-- `artifacts/dataset_summary.csv` - Dataset structure summary.
-- `artifacts/train_test_split_summary.csv` - Training/testing split summary.
+The project uses the SEER/Kaggle Breast Cancer Survival Dataset. This is larger than the earlier Wisconsin Diagnostic Breast Cancer dataset and is more suitable for showing categorical encoding, numerical scaling, model tuning, and survival-status prediction.
 
-## How to Run
+Expected target column:
+
+- `Status` with values such as `Alive` and `Dead`
+
+Expected common feature columns include:
+
+- Age
+- Race
+- Marital Status
+- T Stage
+- N Stage
+- 6th Stage
+- differentiate
+- Grade
+- A Stage
+- Tumor Size
+- Estrogen Status
+- Progesterone Status
+- Regional Node Examined
+- Reginol Node Positive
+- Survival Months
+
+## How to Use
+
+1. Download the SEER Breast Cancer dataset CSV from Kaggle.
+2. Rename the file and place it here:
+
+```text
+data/seer_breast_cancer.csv
+```
+
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+4. Run the full CRISP-DM pipeline:
+
+```bash
 python train_model.py
+```
+
+5. Run the prediction app:
+
+```bash
 streamlit run app.py
 ```
 
+## Project Files
+
+- `train_model.py` - EDA, preprocessing, model training, hyperparameter tuning, evaluation, and artifact saving.
+- `app.py` - Streamlit app for uploading CSV files and generating predictions.
+- `requirements.txt` - Required Python libraries.
+- `sample_input.csv` - Small example input file showing expected columns.
+- `data/README.md` - Explains where to place the downloaded dataset.
+
 ## Models Used
 
-1. Logistic Regression with StandardScaler pipeline and GridSearchCV tuning.
-2. Random Forest Classifier with GridSearchCV tuning.
+1. Logistic Regression with preprocessing pipeline and GridSearchCV tuning.
+2. Random Forest Classifier with preprocessing pipeline and GridSearchCV tuning.
 
-## Final Result
+## Evaluation Metrics
 
-The best performing model in this project was **Logistic Regression**.
+The script automatically generates:
 
-Final test results:
-
-| Model | Accuracy | Precision | Recall | F1-score | ROC-AUC |
-|---|---:|---:|---:|---:|---:|
-| Logistic Regression | 0.9649 | 0.9750 | 0.9286 | 0.9512 | 0.9950 |
-| Random Forest | 0.9561 | 0.9744 | 0.9048 | 0.9383 | 0.9940 |
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Confusion matrices
+- ROC curve comparison
+- Model comparison graph
 
 ## GitHub Repository Link
 
